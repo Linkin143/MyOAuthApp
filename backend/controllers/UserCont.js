@@ -45,7 +45,12 @@ const signInUser = async (req, res) => {
         if (signedUser) {
             if (bcrypt.compareSync(password, signedUser.password)) {
                 const token = jwt.sign({ id: signedUser._id }, process.env.JWT_SECRET_KEY, { expiresIn: "1h" });
-                res.cookie("TOKEN", token, { httpOnly: true, maxAge: 3600000 });
+                res.cookie("TOKEN", token, {
+                    httpOnly: true, 
+                    maxAge: 3600000, 
+                    secure: true,             // must be true on HTTPS (e.g., Netlify)
+                    sameSite: 'None',         // required for cross-site cookies
+                });
 
                 res.status(200).json({
                     message: "Login Successful",
