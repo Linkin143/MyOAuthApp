@@ -9,7 +9,7 @@ function App() {
       <div className="min-h-screen bg-green-950">
         <Routes>
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/signin" element={<SignIn />} />
+          <Route path="/" element={<SignIn />} />
           <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </div>

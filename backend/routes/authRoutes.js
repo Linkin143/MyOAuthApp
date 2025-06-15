@@ -15,10 +15,6 @@ router.get("/me", verifyMe);
 router.get("/logout", logoutUser);
 
 
-
-
-
-
 // Step 1: Redirect user to Google for authentication
 router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
@@ -26,7 +22,7 @@ router.get('/google', passport.authenticate('google', { scope: ['profile', 'emai
 router.get('/google/callback', 
   passport.authenticate('google', {
     session: false,
-    failureRedirect: 'http://localhost:5173/signin'
+    failureRedirect: 'http://localhost:5173'
   }),
   (req, res) => {
     const token = jwt.sign({ id: req.user._id }, process.env.JWT_SECRET_KEY, { expiresIn: '1h' });

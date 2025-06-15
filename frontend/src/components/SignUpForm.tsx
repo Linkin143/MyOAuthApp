@@ -221,7 +221,7 @@ const SignUp: React.FC = () => {
             <p className="text-gray-600">
               Already have an account?{' '}
               <button
-                onClick={() => navigate('/signin')}
+                onClick={() => navigate('/')}
                 className="text-emerald-600 hover:text-emerald-700 font-medium focus:outline-none focus:underline transition-all cursor-pointer"
               >
                 Sign In
