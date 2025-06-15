@@ -58,7 +58,7 @@ const SignUp: React.FC = () => {
       console.log('Form submitted:');
       // Here you would typically handle the actual form submission to your backend
       try {
-        await axios.post('http://localhost:5000/api/auth/signup', formData, { withCredentials: true });
+        await axios.post('https://myoauthapp.onrender.com/api/auth/signup', formData, { withCredentials: true });
         navigate('/signin');
         setTimeout(() => {
           alert("Registration Completed");
@@ -79,7 +79,7 @@ const SignUp: React.FC = () => {
 
     try {
       
-       window.location.href = "http://localhost:5000/api/auth/google";
+       window.location.href = "https://myoauthapp.onrender.com/api/auth/google";
 
     } catch (error) {
       console.log(error);

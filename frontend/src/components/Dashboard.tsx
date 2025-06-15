@@ -5,7 +5,7 @@ function Dashboard() {
     const [message, setMessage] = useState('');
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/dashboard', { withCredentials: true })
+        axios.get('https://myoauthapp.onrender.com/api/dashboard', { withCredentials: true })
             .then(res => setMessage(res.data.message))
             .catch(err => setMessage('Access Denied'));
     }, []);

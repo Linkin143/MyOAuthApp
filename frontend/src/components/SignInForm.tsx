@@ -57,7 +57,7 @@ const SignIn: React.FC = () => {
       console.log('Form submitted:');
       // Here you would typically handle the actual form submission to your backend
       try {
-        await axios.post('http://localhost:5000/api/auth/signin', formData, { withCredentials: true });
+        await axios.post('https://myoauthapp.onrender.com/api/auth/signin', formData, { withCredentials: true });
 
         console.log("Navigating to dashboard");
         navigate('/dashboard');
@@ -82,7 +82,7 @@ const SignIn: React.FC = () => {
 
     try {
 
-      window.location.href = "http://localhost:5000/api/auth/google";
+      window.location.href = "https://myoauthapp.onrender.com/api/auth/google";
 
     } catch (error) {
       console.log(error);
