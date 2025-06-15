@@ -17,24 +17,24 @@ dotenv.config();
 const app = express();
 
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(cors());
+app.use(cors({ origin: "https://oauthweb.netlify.app", credentials: true }));
 app.use(passport.initialize());
 
 
 
 app.use(session({
-  secret: process.env.SESSION_SECRET_KEY,
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: false, maxAge: 3600000 }
+    secret: process.env.SESSION_SECRET_KEY,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false, maxAge: 3600000 }
 }));
 
 const port = process.env.PORT || 5000;
 
-app.use("/api/auth",userRoutes);
-app.use("/api/dashboard",dashboardRoute);
+app.use("/api/auth", userRoutes);
+app.use("/api/dashboard", dashboardRoute);
 
 app.get('/', (req, res) => {
     res.send('Hello World!')
