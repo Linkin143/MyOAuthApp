@@ -19,14 +19,20 @@ router.get("/logout", logoutUser);
 router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 // Step 2: Google redirects here after authentication
-router.get('/google/callback', 
+router.get('/google/callback',
   passport.authenticate('google', {
     session: false,
     failureRedirect: "https://oauthweb.netlify.app"
   }),
   (req, res) => {
     const token = jwt.sign({ id: req.user._id }, process.env.JWT_SECRET_KEY, { expiresIn: '1h' });
-    res.cookie('TOKEN', token, { httpOnly: true, maxAge: 3600000 });
+    res.cookie('TOKEN', token, {
+      httpOnly: true,
+      maxAge: 3600000,
+      secure: true,             // must be true on HTTPS (e.g., Netlify)
+      sameSite: 'None',         // required for cross-site cookies
+
+    });
     res.redirect("https://oauthweb.netlify.app/dashboard");
   }
 );
