@@ -40,8 +40,9 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 
-app.listen(port,'0.0.0.0', async (req, res) => {
+app.listen(port, async (req, res) => {
     try {
+        console.log("Going to connect DB");
         await connectDB();
         console.log(`Example app listening on port ${port}`)
     } catch (error) {
