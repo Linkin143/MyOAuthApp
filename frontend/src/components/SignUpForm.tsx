@@ -59,7 +59,7 @@ const SignUp: React.FC = () => {
       // Here you would typically handle the actual form submission to your backend
       try {
         await axios.post('https://myoauthapp.onrender.com/api/auth/signup', formData, { withCredentials: true });
-        navigate('/signin');
+        navigate('/');
         setTimeout(() => {
           alert("Registration Completed");
         }, 1000);
